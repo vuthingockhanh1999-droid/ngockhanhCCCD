@@ -34,6 +34,8 @@ const responseSchema: Schema = {
   required: ["fullName", "birthDate", "address", "issueDate", "issuedBy"],
 };
 
+export const maxDuration = 60;
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();

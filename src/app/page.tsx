@@ -77,10 +77,11 @@ export default function Dashboard() {
         throw new Error(result.error || 'Unknown error');
       }
 
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
+      const errorMessage = error instanceof Error ? error.message : 'Lỗi không xác định';
       setData(prev => prev.map(item => item.id === id ? { ...item, status: 'error', errorMessage: 'Lỗi OCR' } : item));
-      toast.error(`Nhận diện thất bại: ${file.name}`);
+      toast.error(`Nhận diện thất bại: ${errorMessage}`);
     }
   };
 
